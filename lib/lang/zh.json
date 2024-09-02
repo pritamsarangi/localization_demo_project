@@ -1,0 +1,15 @@
+{
+  "home_page": "主页",
+  "personal_info": "个人信息",
+  "name": "姓名",
+  "name_hint": "输入您的名字",
+  "email": "电子邮件",
+  "email_hint": "输入您的电子邮件",
+  "date_of_birth": "出生日期",
+  "required_field": "必填字段",
+  "submit_info": "提交信息",
+  "about_us": "关于我们",
+  "settings": "设置",
+  "change_language": "更改语言",
+  "about": "关于我们页面上打印的本地虚拟文本"
+}

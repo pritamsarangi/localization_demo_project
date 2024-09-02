@@ -1,0 +1,15 @@
+{
+  "home_page": "Startseite",
+  "personal_info": "Persönliche Informationen",
+  "name": "Name",
+  "name_hint": "Geben Sie Ihren Namen ein",
+  "email": "E-Mail",
+  "email_hint": "Geben Sie Ihre E-Mail-Adresse ein",
+  "date_of_birth": "Geburtsdatum",
+  "required_field": "Erforderliches Feld",
+  "submit_info": "Informationen einreichen",
+  "about_us": "Über uns",
+  "settings": "Einstellungen",
+  "change_language": "Sprache ändern",
+  "about": "Lokaler Dummy-Text zum Drucken auf der Seite „Über uns“."
+}
