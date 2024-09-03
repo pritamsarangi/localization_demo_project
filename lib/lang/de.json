@@ -6,10 +6,16 @@
   "email": "E-Mail",
   "email_hint": "Geben Sie Ihre E-Mail-Adresse ein",
   "date_of_birth": "Geburtsdatum",
-  "required_field": "Erforderliches Feld",
-  "submit_info": "Informationen einreichen",
+  "required_field": "Pflichtfeld",
+  "submit_info": "Informationen übermitteln",
   "about_us": "Über uns",
   "settings": "Einstellungen",
   "change_language": "Sprache ändern",
-  "about": "Lokaler Dummy-Text zum Drucken auf der Seite „Über uns“."
+  "about": "Lokaler Dummy-Text auf der Über-uns-Seite",
+  "local_dummy_text": "Lokaler Dummy-Text auf der Über-uns-Seite",
+  "mission_statement": "Unsere Mission ist es, exzellenten Service und hochwertige Produkte zu liefern, um die Bedürfnisse der Kunden zu erfüllen.",
+  "values": "Unsere Kernwerte umfassen Integrität, Innovation und Kundenorientierung.",
+  "navigate_to_settings": "Zur Einstellungsseite navigieren",
+  "dark_mode": "Dunkler Modus",
+  "enable_notifications": "Benachrichtigungen aktivieren"
 }

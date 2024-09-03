@@ -1,7 +1,6 @@
 package com.example.local_intl_demo_proj
 
-class MainActivity: FlutterActivity()
+import io.flutter.embedding.android.FlutterActivity
 
-open class FlutterActivity {
+class MainActivity: FlutterActivity() {}
 
-}

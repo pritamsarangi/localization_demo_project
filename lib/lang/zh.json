@@ -11,5 +11,11 @@
   "about_us": "关于我们",
   "settings": "设置",
   "change_language": "更改语言",
-  "about": "关于我们页面上打印的本地虚拟文本"
+  "about": "关于我们页面上打印的本地虚拟文本",
+  "local_dummy_text": "关于我们页面上打印的本地虚拟文本",
+  "mission_statement": "我们的使命是提供卓越的服务和高质量的产品，以满足客户的需求。",
+  "values": "我们的核心价值观包括诚信、创新和以客户为中心。",
+  "navigate_to_settings": "导航到设置页面",
+  "dark_mode": "暗模式",
+  "enable_notifications": "启用通知"
 }
