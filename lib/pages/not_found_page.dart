@@ -12,7 +12,7 @@ class _NotFoundPageState extends State<NotFoundPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Not Found Page'),
+        title: const Text('Not Found Page'),
         centerTitle: true,
       ),
     );

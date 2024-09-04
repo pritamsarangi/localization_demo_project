@@ -15,24 +15,24 @@ class _SettingsPageState extends State<SettingsPage> {
   bool _notificationsEnabled = true;
 
   void _changeLanguage(Language language) {
-    Locale _temp;
+    Locale temp;
     switch (language.languageCode) {
       case ENGLISH:
-        _temp = Locale(language.languageCode, 'US');
+        temp = Locale(language.languageCode, 'US');
         break;
       case HINDI:
-        _temp = Locale(language.languageCode, 'IN');
+        temp = Locale(language.languageCode, 'IN');
         break;
       case CHINESE:
-        _temp = Locale(language.languageCode, 'CH');
+        temp = Locale(language.languageCode, 'CH');
         break;
       case GERMAN:
-        _temp = Locale(language.languageCode, 'DE');
+        temp = Locale(language.languageCode, 'DE');
         break;
       default:
-        _temp = Locale(language.languageCode, 'US');
+        temp = Locale(language.languageCode, 'US');
     }
-    MyApp.setLocale(context, _temp);
+    MyApp.setLocale(context, temp);
   }
 
   @override
@@ -52,8 +52,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 onChanged: (Language? language) {
                   if (language != null) _changeLanguage(language);
                 },
-                underline: SizedBox(),
-                icon: Icon(Icons.language, color: Colors.blue),
+                underline: const SizedBox(),
+                icon: const Icon(Icons.language, color: Colors.blue),
                 items: Language.languageList()
                     .map<DropdownMenuItem<Language>>((lang) => DropdownMenuItem(
                   value: lang,

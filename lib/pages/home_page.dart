@@ -18,8 +18,8 @@ class _HomePageState extends State<HomePage> {
     showTimePicker(context: context, initialTime: TimeOfDay.now());
   }
   Future<void> _changeLanguage(Language language) async {
-    Locale _temp = await setLocale(language.languageCode);
-   MyApp.setLocale(context, _temp);
+    Locale temp = await setLocale(language.languageCode);
+   MyApp.setLocale(context, temp);
   }
   @override
   Widget build(BuildContext context) {
@@ -27,21 +27,22 @@ class _HomePageState extends State<HomePage> {
       drawer: _drawerList(),
      appBar: AppBar(
        title: Text(getTranslated(context,'home_page'),
-           style: TextStyle(
+           style: const TextStyle(
              fontWeight: FontWeight.bold
            ),
        ),
        centerTitle: true,
        backgroundColor: Colors.deepPurple[400],
        actions: [
-         Padding(padding: EdgeInsets.all(8.0),
+         Padding(padding: const EdgeInsets.all(8.0),
          child: DropdownButton(
            onChanged: (Language? language) {
-             if(language != null)
-             _changeLanguage(language);
+             if(language != null) {
+               _changeLanguage(language);
+             }
            },
-           underline: SizedBox(),
-           icon: Icon(Icons.language,
+           underline: const SizedBox(),
+           icon: const Icon(Icons.language,
            color: Colors.white,
            ),
              items: Language.languageList()
@@ -52,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                  children: <Widget>[
                    Text(lang.flag),
                    Text(lang.name,
-                   style: TextStyle(fontSize: 20),
+                   style: const TextStyle(fontSize: 20),
                    ),
                  ],
                ),
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
        ],
      ),
       body: Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
         child: _mainForm(context),
       ),
     );
@@ -72,12 +73,12 @@ class _HomePageState extends State<HomePage> {
         key: _key,
         child: Column(
           children: <Widget>[
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height/4,
               child: Center(
                 child: Text(getTranslated(context,'personal_info'),
                 textAlign:  TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
@@ -92,12 +93,12 @@ class _HomePageState extends State<HomePage> {
                 return null;
               },
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 labelText:getTranslated(context,'name'),
                   hintText:getTranslated(context,'name_hint'),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
@@ -108,17 +109,17 @@ class _HomePageState extends State<HomePage> {
                 return null;
               },
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 labelText:getTranslated(context,'email'),
                 hintText: getTranslated(context,'email_hint'),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 hintText: getTranslated(context,'date_of_birth')
               ),
               onTap: () async{
@@ -130,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             MaterialButton(onPressed:(){
@@ -139,12 +140,12 @@ class _HomePageState extends State<HomePage> {
               }
             },
             height: 50,
-            shape: StadiumBorder(),
+            shape: const StadiumBorder(),
             color: Colors.green,
             child: Center(
               child: Text(
                 getTranslated(context,'submit_info'),
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),
             ),
@@ -153,7 +154,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
   Container _drawerList(){
-    TextStyle _textStyle = TextStyle(
+    TextStyle textStyle = const TextStyle(
       color: Colors.white,
       fontSize: 24,
     );
@@ -163,32 +164,32 @@ class _HomePageState extends State<HomePage> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
-              child:Container(
+          const DrawerHeader(
+              child:SizedBox(
                 height: 100,
                 child: CircleAvatar(),
               ),
           ),
           ListTile(
-            leading: Icon(Icons.info,
+            leading: const Icon(Icons.info,
             color: Colors.white,
               size: 30,
             ),
             title: Text(getTranslated(context,'about_us'),
-            style: _textStyle,
+            style: textStyle,
             ),
             onTap: (){
               Navigator.popAndPushNamed(context, aboutRoute);
             },
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.settings,
               color: Colors.white,
               size: 30,
             ),
             title: Text(getTranslated(context,'settings'),
-            style: _textStyle,
+            style: textStyle,
             ),
             onTap: (){
               Navigator.popAndPushNamed(context, settingsRoute);

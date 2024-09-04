@@ -24,30 +24,30 @@ class _AboutPageState extends State<AboutPage> {
           children: <Widget>[
             Text(
               getTranslated(context, 'about_us'),
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               getTranslated(context, 'local_dummy_text'),
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               getTranslated(context, 'mission_statement'),
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               getTranslated(context, 'values'),
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             Center(
               child: MaterialButton(
                 color: Colors.green,
                 child: Text(
                   getTranslated(context, 'navigate_to_settings'),
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
                   Navigator.pushNamed(context, settingsRoute);
