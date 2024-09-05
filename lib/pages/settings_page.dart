@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../localization/localization_constants.dart';
 import '../classes/language.dart';
 import '../main.dart';
@@ -14,25 +16,90 @@ class _SettingsPageState extends State<SettingsPage> {
   bool _darkMode = false;
   bool _notificationsEnabled = true;
 
+  @override
+  void initState() {
+    super.initState();
+    _loadPreferences();
+  }
+
+  Future<void> _loadPreferences() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _darkMode = prefs.getBool('darkMode') ?? false;
+      _notificationsEnabled = prefs.getBool('notificationsEnabled') ?? true;
+    });
+  }
+
   void _changeLanguage(Language language) {
     Locale temp;
     switch (language.languageCode) {
       case ENGLISH:
-        temp = Locale(language.languageCode, 'US');
+        temp = const Locale('en', 'US');
         break;
       case HINDI:
-        temp = Locale(language.languageCode, 'IN');
+        temp = const Locale('hi', 'IN');
         break;
       case CHINESE:
-        temp = Locale(language.languageCode, 'CH');
+        temp = const Locale('zh', 'CN');
         break;
       case GERMAN:
-        temp = Locale(language.languageCode, 'DE');
+        temp = const Locale('de', 'DE');
         break;
       default:
-        temp = Locale(language.languageCode, 'US');
+        temp = const Locale('en', 'US');
     }
     MyApp.setLocale(context, temp);
+  }
+
+  void _toggleDarkMode(bool value) async {
+    setState(() {
+      _darkMode = value;
+    });
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool('darkMode', value);
+    MyApp.setTheme(context, _darkMode ? ThemeMode.dark : ThemeMode.light);
+  }
+
+  void _toggleNotifications(bool value) async {
+    setState(() {
+      _notificationsEnabled = value;
+    });
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool('notificationsEnabled', value);
+
+    if (_notificationsEnabled) {
+      _scheduleDailyNotification();
+      print("Notifications enabled");
+    } else {
+      _cancelNotifications();
+      print("Notifications disabled");
+    }
+  }
+
+  Future<void> _scheduleDailyNotification() async {
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+    AndroidNotificationDetails(
+      'daily_notification_channel_id',
+      'Daily Notifications',
+      channelDescription: 'This channel is used for daily notifications',
+      importance: Importance.max,
+      priority: Priority.high,
+      showWhen: false,
+    );
+    const NotificationDetails platformChannelSpecifics =
+    NotificationDetails(android: androidPlatformChannelSpecifics);
+
+    await flutterLocalNotificationsPlugin.showDailyAtTime(
+      0,
+      'Daily Notification',
+      'Here is your daily notification!',
+      const Time(10, 0, 0), // Notification time: 10:00 AM
+      platformChannelSpecifics,
+    );
+  }
+
+  Future<void> _cancelNotifications() async {
+    await flutterLocalNotificationsPlugin.cancelAll();
   }
 
   @override
@@ -71,20 +138,12 @@ class _SettingsPageState extends State<SettingsPage> {
             SwitchListTile(
               title: Text(getTranslated(context, 'dark_mode')),
               value: _darkMode,
-              onChanged: (bool value) {
-                setState(() {
-                  _darkMode = value;
-                });
-              },
+              onChanged: _toggleDarkMode,
             ),
             SwitchListTile(
               title: Text(getTranslated(context, 'enable_notifications')),
               value: _notificationsEnabled,
-              onChanged: (bool value) {
-                setState(() {
-                  _notificationsEnabled = value;
-                });
-              },
+              onChanged: _toggleNotifications,
             ),
           ],
         ),
